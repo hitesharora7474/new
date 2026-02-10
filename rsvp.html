@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>RSVP</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <a class="pill" href="index.html"><span class="dot"></span><b>Back</b></a>
+      <div class="tag">RSVP</div>
+    </div>
+
+    <section class="hero">
+      <p class="kicker">Only one of these is correct. You already know which one.</p>
+      <h1 class="title">RSVP ✅</h1>
+      <p class="sub">This is not pressure. This is… cute pressure.</p>
+    </section>
+
+    <section class="cards">
+      <div class="card">
+        <div class="rsvpRow">
+          <button class="rsvpBtn" data-choice="yes" onclick="handleRSVP('yes')">YES 💗</button>
+          <button class="rsvpBtn" data-choice="no" onclick="handleRSVP('no')">No</button>
+          <button class="rsvpBtn" data-choice="maybe" onclick="handleRSVP('maybe')">Maybe</button>
+        </div>
+
+        <div class="notice">Tip: click around. Watch what highlights. (I made it satisfying.)</div>
+
+        <div class="actionRow">
+          <a class="pillBtn" href="plan.html">The Plan</a>
+          <a class="pillBtn" href="gifts.html">Gifts</a>
+          <a class="pillBtn primary" href="secret.html"><strong>Secret Message →</strong></a>
+        </div>
+      </div>
+    </section>
+
+    <footer>Made with slightly embarrassing levels of affection.</footer>
+  </div>
+
+  <div id="modalBack" class="modalBack" onclick="if(event.target.id==='modalBack') closeModal()">
+    <div class="modal">
+      <div class="modalHead">
+        <b id="modalTitle">Modal</b>
+        <button class="close" onclick="closeModal()">✕</button>
+      </div>
+      <div id="modalBody" class="modalBody"></div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
