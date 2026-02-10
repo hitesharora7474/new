@@ -1,0 +1,134 @@
+// ---- Cute floating hearts (subtle, not annoying) ----
+(function hearts(){
+  const spawn = () => {
+    const h = document.createElement('div');
+    h.className = 'heart';
+    const left = Math.random() * 100;
+    const dur = 8 + Math.random()*8;
+    const size = 10 + Math.random()*12;
+    h.style.left = left + 'vw';
+    h.style.animationDuration = dur + 's';
+    h.style.width = size + 'px';
+    h.style.height = size + 'px';
+    h.style.opacity = (0.18 + Math.random()*0.25).toFixed(2);
+    document.body.appendChild(h);
+    setTimeout(()=>h.remove(), dur*1000);
+  };
+  setInterval(spawn, 650);
+  setTimeout(()=>setInterval(spawn, 950), 1200);
+})();
+
+// ---- Modal helpers ----
+function openModal(title, html){
+  const back = document.getElementById('modalBack');
+  const t = document.getElementById('modalTitle');
+  const b = document.getElementById('modalBody');
+  t.textContent = title;
+  b.innerHTML = html;
+  back.style.display = 'flex';
+}
+function closeModal(){
+  const back = document.getElementById('modalBack');
+  if(back) back.style.display = 'none';
+}
+window.closeModal = closeModal;
+
+// ---- RSVP buttons interactivity ----
+window.handleRSVP = (choice) => {
+  const buttons = document.querySelectorAll('.rsvpBtn');
+  buttons.forEach(btn => btn.classList.remove('active'));
+
+  const active = document.querySelector(`[data-choice="${choice}"]`);
+  if(active) active.classList.add('active');
+
+  if(choice === 'yes'){
+    openModal("Correct choice 😌", `
+      <p style="margin:0 0 12px;color:#555;font-weight:600;">
+        Okay. Good. Smart. Beautiful. 👑
+      </p>
+      <img class="gif" alt="happy" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbnB2a3JlcXJ1bWZ2bHR4d2xjYm12Y3h5N3h5Y2YwM2l0d2l1bCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/3oriO0OEd9QIDdllqo/giphy.gif">
+      <div class="actionRow">
+        <a class="pillBtn primary" href="plan.html"><strong>Go to the plan →</strong></a>
+      </div>
+    `);
+  } else {
+    openModal("Try again 🙂", `
+      <p style="margin:0 0 12px;color:#555;">
+        Only one of these works. You already know which one.
+      </p>
+      <img class="gif" alt="nope" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbGJ4c3Q0dThqZGo4cDBlOGV2bXg2eXJqY2MyZ3A4eWQ5aHk1ZCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/3o6Zt481isNVuQI1l6/giphy.gif">
+    `);
+  }
+};
+
+// ---- Gifts reveal ----
+window.revealGift = () => {
+  openModal("Ullu banaya 😛", `
+    <p style="margin:0 0 12px;color:#555;font-weight:700;">
+      Ullu banaya bada mazza aaya.
+    </p>
+    <img class="gif" alt="dog teasing" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExd2c5Z2o2c2l5ZTR1dW5tZzZtYTN6cHk2aWQ5c2Q5YXFwOXRiZCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/l0MYt5jPR6QX5pnqM/giphy.gif">
+    <p style="margin:12px 0 0;color:#666;">
+      Gift reveal on date day. No spoilers. 😉
+    </p>
+  `);
+};
+
+// ---- Secret message (3 tries + 10 min timer) ----
+window.initSecret = () => {
+  const input = document.getElementById('secretInput');
+  const btn = document.getElementById('unlockBtn');
+  const triesEl = document.getElementById('triesLeft');
+  const statusEl = document.getElementById('secretStatus');
+  const lockedBox = document.getElementById('lockedBox');
+  const unlockedBox = document.getElementById('unlockedBox');
+  const timerEl = document.getElementById('timer');
+
+  let tries = 3;
+  triesEl.textContent = tries;
+
+  const startTimer = (seconds) => {
+    let s = seconds;
+    const tick = () => {
+      const mm = String(Math.floor(s/60)).padStart(2,'0');
+      const ss = String(s%60).padStart(2,'0');
+      timerEl.textContent = `${mm}:${ss}`;
+      if(s <= 0){
+        clearInterval(int);
+        lockedBox.style.display = 'none';
+        unlockedBox.style.display = 'block';
+      }
+      s -= 1;
+    };
+    tick();
+    const int = setInterval(tick, 1000);
+  };
+
+  btn.addEventListener('click', () => {
+    const val = (input.value || '').trim().toLowerCase();
+    if(!val){
+      statusEl.textContent = "Type something, genius.";
+      return;
+    }
+
+    if(val === 'beige'){
+      statusEl.innerHTML = `Unlocked. Now wait <b class="timer">10 minutes</b> like a good girl 😌`;
+      btn.disabled = true;
+      input.disabled = true;
+      startTimer(10*60);
+      return;
+    }
+
+    tries -= 1;
+    triesEl.textContent = tries;
+
+    if(tries <= 0){
+      btn.disabled = true;
+      input.disabled = true;
+      statusEl.textContent = "No more tries. Ask me nicely in real life. 😇";
+      return;
+    }
+
+    statusEl.textContent = `Wrong. Try again. (${tries} left)`;
+  });
+};
