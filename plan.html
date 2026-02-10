@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>The Plan</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <a class="pill" href="index.html"><span class="dot"></span><b>Back</b></a>
+      <div class="tag">The Plan</div>
+    </div>
+
+    <section class="hero">
+      <p class="kicker">Cute & simple. Like you pretending you’re not excited.</p>
+      <h1 class="title">The Plan (cute & simple)</h1>
+      <p class="sub">Dress code: <b>Anything</b> (because you make everything unreal)</p>
+    </section>
+
+    <section class="cards">
+      <div class="card">
+        <div class="h2"><span class="emoji">🥂</span><span>Pre-booze</span></div>
+        <p class="small">Warm-up + gossip + “how pretty are you?” (mandatory)</p>
+      </div>
+
+      <div class="card">
+        <div class="h2"><span class="emoji">🍽️</span><span>Dinner</span></div>
+        <p class="small">One table. Two idiots. Many smiles.</p>
+      </div>
+
+      <div class="card">
+        <div class="h2"><span class="emoji">🍰</span><span>Dessert</span></div>
+        <p class="small">Sweet ending. Dramatic compliments. Zero shame.</p>
+      </div>
+
+      <div class="card">
+        <div class="h2"><span class="emoji">🧭</span><span>Next</span></div>
+        <p class="small">Go press the gift button and get emotionally attacked.</p>
+        <div class="actionRow">
+          <a class="pillBtn primary" href="gifts.html"><strong>Go to Gifts →</strong></a>
+          <a class="pillBtn" href="rsvp.html">RSVP</a>
+          <a class="pillBtn" href="secret.html">Secret Message</a>
+        </div>
+      </div>
+    </section>
+
+    <footer>Made with slightly embarrassing levels of affection.</footer>
+  </div>
+
+  <div id="modalBack" class="modalBack" onclick="if(event.target.id==='modalBack') closeModal()">
+    <div class="modal">
+      <div class="modalHead">
+        <b id="modalTitle">Modal</b>
+        <button class="close" onclick="closeModal()">✕</button>
+      </div>
+      <div id="modalBody" class="modalBody"></div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
