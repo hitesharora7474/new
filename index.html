@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Valentine Protocol</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <div class="pill"><span class="dot"></span><b>Valentine Protocol</b></div>
+      <div class="tag">Pink + White • Cute mode</div>
+    </div>
+
+    <section class="hero">
+      <p class="kicker">A tiny website. A big plan. One very obvious outcome. (Spoiler: it’s us, being cute.)</p>
+      <h1 class="title">Now that you’ve said yes,<br/>there is no backing out, beautiful.</h1>
+      <p class="sub">For: <b>Tanisha</b> • From: <b>Hitesh</b></p>
+    </section>
+
+    <section class="cards">
+      <div class="card">
+        <div class="h2"><span class="emoji">🗺️</span><span>Choose your next step</span></div>
+        <p class="small">Pick a page. Each one is a different kind of cute.</p>
+
+        <div class="gridButtons">
+          <a class="btn" href="plan.html">
+            <span class="left"><span class="badge">📅</span><b>The Plan</b></span>
+            <span class="chev">→</span>
+          </a>
+          <a class="btn" href="gifts.html">
+            <span class="left"><span class="badge">🎁</span><b>Gifts</b></span>
+            <span class="chev">→</span>
+          </a>
+          <a class="btn" href="rsvp.html">
+            <span class="left"><span class="badge">✅</span><b>RSVP</b></span>
+            <span class="chev">→</span>
+          </a>
+          <a class="btn" href="secret.html">
+            <span class="left"><span class="badge">🔒</span><b>Secret Message</b></span>
+            <span class="chev">→</span>
+          </a>
+        </div>
+
+        <div class="notice">
+          PS: Everything here is intentionally dramatic. Because you deserve dramatic.
+        </div>
+      </div>
+    </section>
+
+    <footer>Made with slightly embarrassing levels of affection.</footer>
+  </div>
+
+  <div id="modalBack" class="modalBack" onclick="if(event.target.id==='modalBack') closeModal()">
+    <div class="modal">
+      <div class="modalHead">
+        <b id="modalTitle">Modal</b>
+        <button class="close" onclick="closeModal()">✕</button>
+      </div>
+      <div id="modalBody" class="modalBody"></div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
